@@ -2,15 +2,15 @@
 	$.fn.ytLinksParse = function(options) {
 		
 		 var settings = $.extend({
-			width: 420,
-			height: 315,
+			width: 480,
+			height: 380,
 			replace_html: '<iframe width="##WIDTH##" height="##HEIGHT##" src="http://www.youtube.com/embed/##CODE##" frameborder="0" allowfullscreen></iframe>'
 		}, options );
 		
 		var invalid_matches_beginnings = ['src=', 'value=', 'href='];
 		
 		var get_replace_html = function(code) {
-			return settings.replace_html.replace('##WIDTH##', settings.width).replace('##HEIGHT##', settings.height).replace('##CODE##', code);
+			return settings.replace_html.replace(/##WIDTH##/g, settings.width).replace(/##HEIGHT##/g, settings.height).replace(/##CODE##/g, code);
 		}
 		
 		var is_false_positive = function(match) {
