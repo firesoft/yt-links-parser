@@ -1,4 +1,31 @@
 yt-links-parser
 ===============
 
-jquery plugin - converts yt movie links within html document into embedded iframes or images (from movie) that are replaced with iframes with movie (with autoplay option on) after click
+jquery plugin - converts youtube movie links within html document into embedded iframes or images (from movie) that are replaced with iframes with movie (with autoplay option on) after click
+
+## Installation
+
+Download files and include script *after* the jQuery library (unless you are packaging scripts somehow else):
+
+```html
+<script src="/path/to/yt-links-parser.js"></script>
+```
+
+If you want use ytLinksParseToImage methos you should also include css file:
+```html
+<link rel="stylesheet" type="text/css" href="/path/to/yt-links-parser.css">
+```
+
+**Probably you will like to change path to play image (yt_play.png) in css file.**
+
+## Usage
+
+To replace all occurrences of youtube links into iframes with youtube movies:
+```javascript
+$("container").ytLinksParse();
+```
+
+To replace all occurrences of youtube links into movie images that are replaced with yt movies after click (with autoplay):
+```javascript
+$("container").ytLinksParseToImage();
+```
