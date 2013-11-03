@@ -1,0 +1,16 @@
+.yt-links-parser-container
+{
+	position:relative;
+	display:inline-block
+}
+
+.yt-links-parser-play
+{
+	background:url('./yt_play.png') no-repeat center;
+	position:absolute;
+	width:100%;
+	height:100%;
+	left:0;
+	top:0;
+	cursor:pointer
+}
