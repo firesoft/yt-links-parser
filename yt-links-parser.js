@@ -6,14 +6,14 @@
 			height: 380
 		}, options );
 		
-		settings.replace_html = '<div class="yt-links-parser-container" data-yt-code="##CODE##"><img src="http://img.youtube.com/vi/##CODE##/hqdefault.jpg" style="width:##WIDTH##px;height:##HEIGHT##px"><div class="yt-links-parser-play"></div></div>';
+		settings.replace_html = '<div class="yt-links-parser-container" data-yt-code="##CODE##"><img src="//img.youtube.com/vi/##CODE##/hqdefault.jpg" style="width:##WIDTH##px;height:##HEIGHT##px"><div class="yt-links-parser-play"></div></div>';
 		
 		return this.ytLinksParse(settings).find('.yt-links-parser-container').on('click', function() {
 			var el = jQuery(this);
 			var w = el.width();
 			var h = el.height();
 			var code = el.attr('data-yt-code');
-			el.replaceWith('<iframe width="'+w+'" height="'+h+'" src="http://www.youtube.com/embed/'+code+'?autoplay=1" frameborder="0" allowfullscreen></iframe>');
+			el.replaceWith('<iframe width="'+w+'" height="'+h+'" src="//www.youtube.com/embed/'+code+'?autoplay=1" frameborder="0" allowfullscreen></iframe>');
 			return false;
 		});
 	};
@@ -23,7 +23,7 @@
 		var settings = $.extend({
 			width: 480,
 			height: 380,
-			replace_html: '<iframe width="##WIDTH##" height="##HEIGHT##" src="http://www.youtube.com/embed/##CODE##" frameborder="0" allowfullscreen></iframe>'
+			replace_html: '<iframe width="##WIDTH##" height="##HEIGHT##" src="//www.youtube.com/embed/##CODE##" frameborder="0" allowfullscreen></iframe>'
 		}, options );
 		
 		var invalid_matches_beginnings = ['src=', 'value=', 'href='];
