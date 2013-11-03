@@ -118,7 +118,7 @@
 		
 		return this.each(function() {
 			var html = $(this).html();
-			var pattern = /(href=['"]|src=['"]|value=['"])?((https?:)?\/\/){0,1}(www.youtube.com|youtu.be)\/(.+?)('|"|<|\s|$)/gi;
+			var pattern = /(href=['"]?|src=['"]?|value=['"]?)?((https?:)?\/\/){0,1}(www.youtube.com|youtu.be)\/(.+?)('|"|<|\s|$)/gi;
 			
 			var matches = [];
 			var result = true;
