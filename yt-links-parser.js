@@ -6,7 +6,7 @@
 			height: 380
 		}, options );
 		
-		settings.replace_html = '<div class="yt-links-parser-container" data-yt-code="##CODE##"><img src="http://img.youtube.com/vi/##CODE##/hqdefault.jpg" style="width:##WIDTH##;height:##HEIGHT##"><div class="yt-links-parser-play"></div></div>';
+		settings.replace_html = '<div class="yt-links-parser-container" data-yt-code="##CODE##"><img src="http://img.youtube.com/vi/##CODE##/hqdefault.jpg" style="width:##WIDTH##px;height:##HEIGHT##px"><div class="yt-links-parser-play"></div></div>';
 		
 		return this.ytLinksParse(settings).find('.yt-links-parser-container').on('click', function() {
 			var el = jQuery(this);
