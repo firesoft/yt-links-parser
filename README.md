@@ -22,10 +22,17 @@ If you want use ytLinksParseToImage methos you should also include css file:
 
 To replace all occurrences of youtube links into iframes with youtube movies:
 ```javascript
-$("container").ytLinksParse();
+$("#container").ytLinksParse();
 ```
 
 To replace all occurrences of youtube links into movie images that are replaced with yt movies after click (with autoplay):
 ```javascript
-$("container").ytLinksParseToImage();
+$("#container").ytLinksParseToImage();
 ```
+
+If you want to change width and height of the movie you can pass an object containing width and height properties:
+```javascript
+$("#container").ytLinksParse({width:640, height:390});
+```
+
+**Both methods support object param.**
