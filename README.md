@@ -20,12 +20,12 @@ If you want use ytLinksParseToImage methos you should also include css file:
 
 ## Usage
 
-To replace all occurrences of youtube links into iframes with youtube movies:
+To replace all occurrences of youtube links with actual youtube movies (iframe code):
 ```javascript
 $("#container").ytLinksParse();
 ```
 
-To replace all occurrences of youtube links into movie images that are replaced with yt movies after click (with autoplay):
+To replace all occurrences of youtube links with images from movie (autoplay after click):
 ```javascript
 $("#container").ytLinksParseToImage();
 ```
