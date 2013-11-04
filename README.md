@@ -1,7 +1,7 @@
 yt-links-parser
 ===============
 
-jquery plugin - converts youtube movie links within html document into embedded iframes or images (from movie) that are replaced with iframes with movie (with autoplay option on) after click
+jquery plugin - converts youtube movie links within html document into embedded movie iframes or images (from movie) that are replaced with movie iframes (with autoplay option on) after click
 
 ## Installation
 
