@@ -8,11 +8,14 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
+}
+
+.yt-links-parser-darken {
 	filter: brightness(85%);
 	transition: .4s;
 }
 
-.yt-links-parser-container:hover .yt-links-parser-thumbnail{
+.yt-links-parser-container:hover .yt-links-parser-darken{
 	filter: brightness(100%);
 	transition: .4s;
 }

@@ -31,9 +31,9 @@ To replace all occurrences of youtube links with images from movie (autoplay aft
 $("#container").ytLinksParseToImage();
 ```
 
-If you want to change width and height of the movie you can pass an object containing width and height properties:
+If you want to change width and height of the movie or darken option (default: true) you can pass an object containing width and height properties:
 ```javascript
-$("#container").ytLinksParse({width:640, height:390});
+$("#container").ytLinksParse({width:640, height:390, darken: false});
 ```
 
 **Both methods support object param.**

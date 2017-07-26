@@ -3,10 +3,15 @@
     $.fn.ytLinksParseToImage = function(options) {
         var settings = $.extend({
             width: 640,
-            height: 360
+            height: 360,
+            darken: true
         }, options);
 
-        settings.replaceHtml = '<div class="yt-links-parser-container" data-yt-code="##CODE##"><div class="yt-links-parser-thumbnail" style="background-image:url(\'https://i.ytimg.com/vi/##CODE##/hqdefault.jpg\');width:##WIDTH##px;height:##HEIGHT##px"></div><div class="yt-links-parser-play"></div></div>';
+        var darkenClass = '';
+        if (settings.darken) {
+            darkenClass = ' yt-links-parser-darken';
+        }
+        settings.replaceHtml = '<div class="yt-links-parser-container" data-yt-code="##CODE##"><div class="yt-links-parser-thumbnail' + darkenClass + '" style="background-image:url(\'https://i.ytimg.com/vi/##CODE##/hqdefault.jpg\');width:##WIDTH##px;height:##HEIGHT##px"></div><div class="yt-links-parser-play"></div></div>';
 
         return this.ytLinksParse(settings).find('.yt-links-parser-container').off('click.play').on('click.play', function() {
             var el = jQuery(this);
@@ -21,8 +26,8 @@
     $.fn.ytLinksParse = function(options) {
 
         var settings = $.extend({
-            width: 480,
-            height: 380,
+            width: 640,
+            height: 360,
             replaceHtml: '<iframe width="##WIDTH##" height="##HEIGHT##" src="//www.youtube.com/embed/##CODE##" frameborder="0" allowfullscreen></iframe>'
         }, options);
 
