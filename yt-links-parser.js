@@ -6,8 +6,7 @@
             height: 360
         }, options);
 
-        //settings.replaceHtml = '<div class="yt-links-parser-container" data-yt-code="##CODE##"><img src="https://i.ytimg.com/vi/##CODE##/hqdefault.jpg" style="width:##WIDTH##px;height:##HEIGHT##px"><div class="yt-links-parser-play"></div></div>';
-        settings.replaceHtml = '<div class="yt-links-parser-container" data-yt-code="##CODE##" style="background-image:url(\'https://i.ytimg.com/vi/##CODE##/hqdefault.jpg\');width:##WIDTH##px;height:##HEIGHT##px"><div class="yt-links-parser-play"></div></div>';
+        settings.replaceHtml = '<div class="yt-links-parser-container" data-yt-code="##CODE##"><div class="yt-links-parser-thumbnail" style="background-image:url(\'https://i.ytimg.com/vi/##CODE##/hqdefault.jpg\');width:##WIDTH##px;height:##HEIGHT##px"></div><div class="yt-links-parser-play"></div></div>';
 
         return this.ytLinksParse(settings).find('.yt-links-parser-container').off('click.play').on('click.play', function() {
             var el = jQuery(this);

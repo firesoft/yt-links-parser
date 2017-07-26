@@ -1,9 +1,20 @@
 .yt-links-parser-container {
 	position: relative;
 	display: inline-block;
+}
+
+.yt-links-parser-thumbnail {
+	display: inline-block;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
+	filter: brightness(85%);
+	transition: .4s;
+}
+
+.yt-links-parser-container:hover .yt-links-parser-thumbnail{
+	filter: brightness(100%);
+	transition: .4s;
 }
 
 .yt-links-parser-play {
@@ -13,5 +24,12 @@
 	height: 100%;
 	left: 0;
 	top: 0;
-	cursor: pointer
+	cursor: pointer;
+	filter: grayscale(100%);
+	transition: .4s;
+}
+
+.yt-links-parser-container:hover .yt-links-parser-play {
+	filter: grayscale(0);
+	transition: .4s;
 }
