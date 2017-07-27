@@ -2,8 +2,8 @@
 
     $.fn.ytLinksParseToImage = function(options) {
         var settings = $.extend({
-            width: 640,
-            height: 360,
+            width: 480,
+            height: 270,
             darken: true
         }, options);
 
@@ -26,15 +26,18 @@
     $.fn.ytLinksParse = function(options) {
 
         var settings = $.extend({
-            width: 640,
-            height: 360,
+            width: 480,
+            height: 270,
             replaceHtml: '<iframe width="##WIDTH##" height="##HEIGHT##" src="//www.youtube.com/embed/##CODE##" frameborder="0" allowfullscreen></iframe>'
         }, options);
 
         var invalidMatchesBeginnings = ['src=', 'value=', 'href='];
 
-        function getReplaceHtml(code) {
-            return settings.replaceHtml.replace(/##WIDTH##/g, settings.width).replace(/##HEIGHT##/g, settings.height).replace(/##CODE##/g, code);
+        function getReplaceHtml(code, options) {
+            var width = options.width ? options.width : settings.width;
+            var height = options.height ? options.height : settings.height;
+
+            return settings.replaceHtml.replace(/##WIDTH##/g, width).replace(/##HEIGHT##/g, height).replace(/##CODE##/g, code);
         }
 
         function isFalsePositive(match) {
@@ -46,13 +49,13 @@
             return false;
         }
 
-        function replaceMatches(matches, html) {
+        function replaceMatches(matches, html, options) {
             var newHtml = '';
             var offset = 0;
 
             for (var i = 0; i < matches.length; i++) {
                 var match = matches[i];
-                newHtml += html.slice(offset, match.offset) + getReplaceHtml(match.videoCode);
+                newHtml += html.slice(offset, match.offset) + getReplaceHtml(match.videoCode, options);
                 offset = match.offset + match.length;
             }
             newHtml += html.slice(offset, html.length);
@@ -140,8 +143,19 @@
             return match;
         }
 
-        return this.each(function() {
-            var html = $(this).html();
+        return this.toArray().reverse().reduce(function(collection, element) {
+            var jQueryElement = $(element);
+
+            var options = {};
+            if (jQueryElement.data('yt-width')) {
+                options.width = parseInt(jQueryElement.data('yt-width'));
+            }
+            if (jQueryElement.data('yt-height')) {
+                options.height = parseInt(jQueryElement.data('yt-height'));
+            }
+
+
+            var html = jQueryElement.html();
             var pattern = /(href=['"]?|src=['"]?|value=['"]?)?((https?:)?\/\/){0,1}(www.youtube.com|youtu.be)\/(.+?)('|"|<|\s|$)/gi;
 
             var matches = [];
@@ -158,8 +172,9 @@
                     matches.push({videoCode: videoCode, offset: result['index'], length: match.length});
                 }
             }
-            html = replaceMatches(matches, html);
-            $(this).html(html);
-        });
+            html = replaceMatches(matches, html, options);
+            jQueryElement.html(html);
+            return collection.add(jQueryElement);
+        }, $());
     };
 }(jQuery));
