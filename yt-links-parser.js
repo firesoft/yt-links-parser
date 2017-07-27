@@ -143,9 +143,7 @@
             return match;
         }
 
-        return this.toArray().reverse().reduce(function(collection, element) {
-            var jQueryElement = $(element);
-
+        function getElementOptions(jQueryElement) {
             var options = {};
             if (jQueryElement.data('yt-width')) {
                 options.width = parseInt(jQueryElement.data('yt-width'));
@@ -153,8 +151,13 @@
             if (jQueryElement.data('yt-height')) {
                 options.height = parseInt(jQueryElement.data('yt-height'));
             }
+            return options;
+        }
 
+        return this.toArray().reverse().reduce(function(collection, element) {
+            var jQueryElement = $(element);
 
+            var elementOptions = getElementOptions(jQueryElement);
             var html = jQueryElement.html();
             var pattern = /(href=['"]?|src=['"]?|value=['"]?)?((https?:)?\/\/){0,1}(www.youtube.com|youtu.be)\/(.+?)('|"|<|\s|$)/gi;
 
@@ -172,7 +175,7 @@
                     matches.push({videoCode: videoCode, offset: result['index'], length: match.length});
                 }
             }
-            html = replaceMatches(matches, html, options);
+            html = replaceMatches(matches, html, elementOptions);
             jQueryElement.html(html);
             return collection.add(jQueryElement);
         }, $());
