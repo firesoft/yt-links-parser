@@ -14,7 +14,7 @@
 	transition: .4s;
 }
 
-.yt-links-parser-container:hover .yt-links-parser-thumbnail{
+.yt-links-parser-container:hover .yt-links-parser-thumbnail {
 	transition: .4s;
 }
 
@@ -26,7 +26,7 @@
 	transform: scale(1.1);
 }
 
-.yt-links-parser-container:hover .yt-links-parser-darken{
+.yt-links-parser-container:hover .yt-links-parser-darken {
 	filter: brightness(100%);
 }
 
