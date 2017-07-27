@@ -4,14 +4,18 @@
         var settings = $.extend({
             width: 480,
             height: 270,
-            darken: true
+            darken: true,
+            zoom: true
         }, options);
 
-        var darkenClass = '';
+        var thumbnailClass = 'yt-links-parser-thumbnail';
         if (settings.darken) {
-            darkenClass = ' yt-links-parser-darken';
+            thumbnailClass += ' yt-links-parser-darken';
         }
-        settings.replaceHtml = '<div class="yt-links-parser-container" data-yt-code="##CODE##"><div class="yt-links-parser-thumbnail' + darkenClass + '" style="background-image:url(\'https://i.ytimg.com/vi/##CODE##/hqdefault.jpg\');width:##WIDTH##px;height:##HEIGHT##px"></div><div class="yt-links-parser-play"></div></div>';
+        if (settings.zoom) {
+            thumbnailClass += ' yt-links-parser-zoom';
+        }
+        settings.replaceHtml = '<div class="yt-links-parser-container" data-yt-code="##CODE##" style="width:##WIDTH##px;height:##HEIGHT##px"><div class="' + thumbnailClass + '" style="background-image:url(\'https://i.ytimg.com/vi/##CODE##/hqdefault.jpg\');width:##WIDTH##px;height:##HEIGHT##px"></div><div class="yt-links-parser-play"></div></div>';
 
         return this.ytLinksParse(settings).find('.yt-links-parser-container').off('click.play').on('click.play', function() {
             var el = jQuery(this);
