@@ -141,7 +141,7 @@
         function removeEndingFromMatch(match) {
             var lastChar = match.charAt(match.length-1);
 
-            if (lastChar.search(/'|"|<|\s/g) != -1) {
+            if (lastChar.search(/[^a-z0-9\?\=\&\-\_]/gi) != -1) {
                 match = match.substr(0, match.length-1);
             }
             return match;
@@ -163,7 +163,7 @@
 
             var elementOptions = getElementOptions(jQueryElement);
             var html = jQueryElement.html();
-            var pattern = /(href=['"]?|src=['"]?|value=['"]?)?((https?:)?\/\/){0,1}(www.youtube.com|youtu.be)\/(.+?)('|"|<|\s|$)/gi;
+            var pattern = /(href=['"]?|src=['"]?|value=['"]?)?((https?:)?\/\/){0,1}(www.youtube.com|youtu.be)\/(.+?)([^a-z0-9\?\=\&\-\_]|$)/gi;
 
             var matches = [];
             var result = true;
